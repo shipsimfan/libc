@@ -147,7 +147,10 @@ cfg_if! {
 
         mod wasi;
         pub use wasi::*;
-    } else {
+    } else if #[cfg(target_os = "los")] {
+        mod los;
+        pub use los::*;
+        } else {
         // non-supported targets: empty...
     }
 }
